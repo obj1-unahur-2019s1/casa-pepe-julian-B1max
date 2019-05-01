@@ -1,0 +1,63 @@
+import cosas.*
+import casa.*
+test "cantidadDeCosasCompradas" {
+	casaDePepeYJulian.comprar(tiraDeAsado)
+	casaDePepeYJulian.comprar(cama)
+	casaDePepeYJulian.comprar(plancha)
+	assert.equals(3,casaDePepeYJulian.cantidadDeCosasCompradas())
+
+}
+
+test "tieneComida"{
+	casaDePepeYJulian.comprar(tiraDeAsado)
+	casaDePepeYJulian.comprar(paqueteDeFideos)
+	//casaDePepeYJulian.comprar(plancha)
+	assert.equals(true,casaDePepeYJulian.tieneComida())
+}
+
+test "vieneDeEquiparse"{
+	casaDePepeYJulian.comprar(cama)
+	
+	assert.equals(true,casaDePepeYJulian.vieneDeEquiparse())
+}
+
+test "esDerrochona"{
+	casaDePepeYJulian.comprar(cama)
+	casaDePepeYJulian.comprar(cama)
+	assert.equals(true,casaDePepeYJulian.esDerrochona())
+}
+test " compraMasCara"{
+	//casaDePepeYJulian.comprar(cama)
+	casaDePepeYJulian.comprar(plancha)
+	casaDePepeYJulian.comprar(tiraDeAsado)
+	casaDePepeYJulian.comprar(paqueteDeFideos)
+	assert.equals(plancha,casaDePepeYJulian.compraMasCara())
+}
+test "electrodomesticosComprados"{
+	casaDePepeYJulian.comprar(heladera)
+	casaDePepeYJulian.comprar(plancha)
+	casaDePepeYJulian.comprar(tiraDeAsado)
+	casaDePepeYJulian.comprar(paqueteDeFideos)
+	
+	assert.equals(2,casaDePepeYJulian.electrodomesticosComprados())
+}
+test "malaEpoca"{
+	casaDePepeYJulian.comprar(tiraDeAsado)
+	casaDePepeYJulian.comprar(paqueteDeFideos)
+	assert.equals(true,casaDePepeYJulian.malaEpoca())
+}test "queFaltaComprar"{
+	casaDePepeYJulian.comprar(heladera)
+	casaDePepeYJulian.comprar(plancha)
+	casaDePepeYJulian.comprar(tiraDeAsado)
+	//faltaria cama y paqueteDeFideos
+	
+	var lista = [cama,paqueteDeFideos,heladera,plancha,tiraDeAsado]
+	var lista2 =casaDePepeYJulian.queFaltaComprar(lista).any(cama)
+	var lista3 = [cama,paqueteDeFideos]
+	assert.equals(lista3,casaDePepeYJulian.queFaltaComprar(lista))
+}
+test "faltaComida"{
+	casaDePepeYJulian.comprar(heladera)
+	casaDePepeYJulian.comprar(plancha)
+	assert.equals(true,casaDePepeYJulian.faltaComida())
+}
