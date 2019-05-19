@@ -51,10 +51,9 @@ test "malaEpoca"{
 	casaDePepeYJulian.comprar(tiraDeAsado)
 	//faltaria cama y paqueteDeFideos
 	
-	var lista = [cama,paqueteDeFideos,heladera,plancha,tiraDeAsado]
-	var lista2 =casaDePepeYJulian.queFaltaComprar(lista).any(cama)
-	var lista3 = [cama,paqueteDeFideos]
-	assert.equals(lista3,casaDePepeYJulian.queFaltaComprar(lista))
+	var lista = [cama,paqueteDeFideos, heladera, plancha, tiraDeAsado]
+	var resultado = [cama, paqueteDeFideos]
+	assert.equals(resultado,casaDePepeYJulian.queFaltaComprar(lista))
 }
 test "faltaComida"{
 	casaDePepeYJulian.comprar(heladera)

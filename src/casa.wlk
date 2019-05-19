@@ -1,9 +1,11 @@
 import cosas.* 
+import cuentas.*
 object casaDePepeYJulian {
+	var cuentaActual = cuentaCorriente
 	const cosas = []
 	method comprar(cosa){
 		cosas.add(cosa)
-		
+		cuentaActual.extraer(cosa.precio())
 	}
 	method cantidadDeCosasCompradas() {return cosas.size()}
 	method tieneComida() {	return cosas.any({n=>n.esComida()})}
@@ -14,6 +16,7 @@ object casaDePepeYJulian {
 	method malaEpoca() {return return cosas.all{e=> e.esComida()}}
 	method queFaltaComprar(lista){return lista.filter({e=> not cosas.contains(e)})}
 	method faltaComida() {return (cosas.count{e=>e.esComida()}) < 2}
-	method  gastar(importe){}
-	method  dineroDisponible(){}
+	method gastar(importe){cuentaActual.extraer(importe)}
+	method dineroDisponible(){return cuentaCombinada.saldo()}
+	method cambiarCuenta(cuenta){cuentaActual = cuenta}
 } 
