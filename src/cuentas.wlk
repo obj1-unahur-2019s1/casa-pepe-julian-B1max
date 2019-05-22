@@ -12,7 +12,9 @@ object cuentaConGastos{
 	method saldo(){return saldo}
 }
 object cuentaCombinada{
-	method depositar(importe) {cuentaCorriente.depositar(importe)}
-	method extraer(importe){if (cuentaCorriente.saldo()>=importe){cuentaCorriente.extraer(importe)}else{cuentaConGastos.extraer(importe)}}
-	method saldo(){return cuentaCorriente.saldo()+cuentaConGastos.saldo()}
+	var principal = cuentaCorriente
+	var secundaria = cuentaConGastos
+	method depositar(importe) {principal.depositar(importe)}
+	method extraer(importe){if (principal.saldo()>=importe){principal.extraer(importe)}else{secundaria.extraer(importe)}}
+	method saldo(){return principal.saldo()+secundaria.saldo()}
 }
